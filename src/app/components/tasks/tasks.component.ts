@@ -22,8 +22,16 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasks().subscribe((dado) => {
       this.tarefas = dado;
       console.log(dado);
-    })
+    });
 
+  }
+
+  deleteTask(tarefa: Tarefa) {
+    this.taskService.deleteTask(tarefa).subscribe(() => (this.tarefas = this.tarefas.filter((t) => t.id == tarefa.id)));
+  }
+
+  toggleConcluiido(tarefa: Tarefa){
+    
   }
 
 }
